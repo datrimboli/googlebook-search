@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import MediaContext from '../../utils/MediaContext'
+import BookContext from '../../utils/BookContext'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import SearchIcon from '@material-ui/icons/Search'
@@ -10,7 +10,7 @@ const Form = () => {
     search,
     handleInputChange,
     handleSearchOMDB
-  } = useContext(MediaContext)
+  } = useContext(BookContext)
 
   return (
     <form onSubmit={handleSearchOMDB}>
