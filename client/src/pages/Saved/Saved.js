@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import API from '../../utils/API'
+import {
+  Card, CardImg, CardText, CardBody, CardLink,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
+
 
 const Saved = () => {
 
@@ -10,13 +15,13 @@ const Saved = () => {
   savedState.handleDeleteSaved = id => {
     API.deleteMedia(id)
       .then(() => {
-        let saved = savedState.saved.filter(media => media._id !== id)
+        let saved = savedState.saved.filter(book => book._id !== id)
         setSavedState({ ...savedState, saved })
       })
   }
 
   useEffect(() => {
-    API.getSavedMedia()
+    API.getSavedBook()
       .then(({ data }) => {
         setSavedState({ ...savedState, saved: data })
       })
@@ -24,17 +29,21 @@ const Saved = () => {
 
   return (
     <>
-    <h1>Your saved Movies/TV</h1>
+    <h1>Your saved Books</h1>
       {
         savedState.saved.length > 0 ? (
-          savedState.saved.map(media => (
-            <div key={media.imdbID}>
-              <img src={media.poster} alt={media.title} />
-              <h3>{media.title}</h3>
-              <h4>Type: {media.type}</h4>
-              <h4>Year: {media.year}</h4>
-              <h5>imdbID: {media.imdbID}</h5>
-              <button onClick={() => savedState.handleDeleteSaved(media._id)}>Delete</button>
+          savedState.saved.map(book => (
+            <div key={book.googleId}>
+              <img src={book.poster} alt={book.title} />
+              <h3>{book.title}</h3>
+              <h4>Authors: {book.type}</h4>
+              <h4>Description: {book.year}</h4>
+             
+              <Button color="primary" href={book.link}>Google Books Link</Button>
+              <br></br>
+              <br></br>
+              <Button color="primary" onClick={() => savedState.handleDeleteSaved(book._id)}>Delete</Button>
+              <hr></hr>
             </div>
           ))
         ) : null
