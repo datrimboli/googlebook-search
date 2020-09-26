@@ -12,6 +12,7 @@ const App = () => {
   return (
     <Router>
       <div>
+        <p>Google API Book Search</p>
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />

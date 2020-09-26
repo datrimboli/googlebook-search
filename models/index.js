@@ -1,3 +1,3 @@
 module.exports = {
-  Media: require('./Media.js')
+  Book: require('./Book.js')
 }
