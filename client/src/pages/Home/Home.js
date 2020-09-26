@@ -1,36 +1,36 @@
 import React, { useState } from 'react'
-import MediaContext from '../../utils/MediaContext'
+import BooContext from '../../utils/BookContext'
 import Typography from '@material-ui/core/Typography'
 import Form from '../../components/Form'
-import Media from '../../components/Media'
+import Book from '../../components/Book'
 import API from '../../utils/API'
 
 const Home = () => {
 
-  const [mediaState, setMediaState] = useState({
+  const [bookState, setbookState] = useState({
     search: '',
     media: []
   })
 
-  mediaState.handleInputChange = event => {
-    setMediaState({ ...mediaState, [event.target.name]: event.target.value })
+  bookState.handleInputChange = event => {
+    setBookState({ ...bookState, [event.target.name]: event.target.value })
   }
 
-  mediaState.handleSearchOMDB = event => {
+  bookState.handleSearchGoogle = event => {
     event.preventDefault()
-    API.getMedia(mediaState.search)
+    API.getBook(bookState.search)
       .then(({ data }) => {
-        setMediaState({ ...mediaState, media: data, search: '' })
+        setBookState({ ...bookState, book: data, search: '' })
       })
       .catch(err => console.error(err))
   }
 
-  mediaState.handleSaveMedia = imdbID => {
-    const saveMedia = mediaState.media.filter(x => x.imdbID === imdbID)[0]
-    API.saveMedia(saveMedia)
+  bookState.handleSaveMedia = googleId => {
+    const saveBook = bookState.media.filter(x => x.googleId === googleId)[0]
+    API.saveBook(saveBook)
       .then(() => {
-        const media = mediaState.media.filter(x => x.imdbID !== imdbID)
-        setMediaState({ ...mediaState, media })
+        const book = bookState.book.filter(x => x.googleId !== googleId)
+        setBookState({ ...bookState, book })
       })
   }
 
