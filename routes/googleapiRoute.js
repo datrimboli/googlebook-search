@@ -9,10 +9,10 @@ router.get('/google/:search', (req, res) => {
       authors: book.volumeInfo.authors,
       description: book.volumeInfo.description,
       image: book.volumeInfo.imageLinks.thumbnail,
-      link:vbook.volumeInfo.infoLink,
+      link: book.volumeInfo.infoLink,
       googleId: book.id
     })))
-    .then(apiMedia => Book.find()
+    .then(apiBook => Book.find()
       .then(book => apibook.filter(data =>
         book.every(dbData => dbData.googleId !== data.googleId))))
     .then(book => res.json(book))

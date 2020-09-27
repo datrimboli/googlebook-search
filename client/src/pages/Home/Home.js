@@ -7,7 +7,7 @@ import API from '../../utils/API'
 
 const Home = () => {
 
-  const [bookState, setbookState] = useState({
+  const [bookState, setBookState] = useState({
     search: '',
     book: []
   })

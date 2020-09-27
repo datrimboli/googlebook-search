@@ -15,7 +15,7 @@ router.post('/book', (req, res) => {
 
 router.put('/book/:id', (req, res) => {
   Book.findByIdAndUpdate(req.params.id, req.body)
-    .then(media => res.json(book))
+    .then(book => res.json(book))
     .catch(err => console.log(err))
 })
 

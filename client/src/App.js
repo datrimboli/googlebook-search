@@ -1,19 +1,29 @@
 import React from 'react'
 import Home from './pages/Home'
 import Saved from './pages/Saved'
-import Navbar from './components/Navbar'
+import { Nav, NavItem, NavLink } from 'reactstrap'
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
 
-const App = () => {
+function App() {
   return (
+
     <Router>
       <div>
         <p>Google API Book Search</p>
-        <Navbar />
+        <Nav>
+          <NavItem>
+            <NavLink href="/">Home</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/saved">Saved</NavLink>
+          </NavItem>
+        </Nav>
+        <hr />
+
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/saved" component={Saved} />
@@ -22,5 +32,6 @@ const App = () => {
     </Router>
   )
 }
+
 
 export default App
