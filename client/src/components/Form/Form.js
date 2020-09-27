@@ -9,11 +9,11 @@ const Form = () => {
   const {
     search,
     handleInputChange,
-    handleSearchOMDB
+    handleSearchGoogle
   } = useContext(BookContext)
 
   return (
-    <form onSubmit={handleSearchOMDB}>
+    <form onSubmit={handleSearchGoogle}>
       <TextField 
         label="Search" 
         variant="outlined" 
@@ -25,7 +25,7 @@ const Form = () => {
           variant="contained"
           color="primary"
           endIcon={<SearchIcon />}
-          onClick={handleSearchOMDB}
+          onClick={handleSearchGoogle}
         >
           Search
       </Button>

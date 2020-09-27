@@ -9,7 +9,7 @@ const Home = () => {
 
   const [bookState, setbookState] = useState({
     search: '',
-    media: []
+    book: []
   })
 
   bookState.handleInputChange = event => {
@@ -25,8 +25,8 @@ const Home = () => {
       .catch(err => console.error(err))
   }
 
-  bookState.handleSaveMedia = googleId => {
-    const saveBook = bookState.media.filter(x => x.googleId === googleId)[0]
+  bookState.handleSaveBook = googleId => {
+    const saveBook = bookState.book.filter(x => x.googleId === googleId)[0]
     API.saveBook(saveBook)
       .then(() => {
         const book = bookState.book.filter(x => x.googleId !== googleId)
@@ -38,21 +38,21 @@ const Home = () => {
     <>
       <hr />
       <Typography variant="h6">
-        Search for Movies and TV Shows
+        Search for Book on Google
       </Typography>
-      <MediaContext.Provider value={mediaState}>
+      <BookContext.Provider value={bookState}>
       <Form />
       {
-        mediaState.media.length > 0 ? (
-          mediaState.media.map(media => (
-            <Media
-              key={media.imdbID}
-              media={media}
-              handleSaveMedia={mediaState.handleSaveMedia} />
+        bookState.book.length > 0 ? (
+          bookState.book.map(book => (
+            <Book
+              key={book.googleId}
+              book={book}
+              handleSaveBook={bookState.handleSaveBook} />
           ))
         ) : null
       }
-      </MediaContext.Provider>
+      </BookContext.Provider>
     </>
   )
 }
