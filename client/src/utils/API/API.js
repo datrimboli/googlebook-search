@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = {
-  getMedia: search => axios.get(`/api/google/${search}`),
+  getBook: search => axios.get(`/api/google/${search}`),
   getSavedBook: () => axios.get('/api/book'),
   saveBook: book => axios.post('/api/book', book),
   deleteBook: id => axios.delete(`/api/book/${id}`)

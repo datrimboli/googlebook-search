@@ -13,7 +13,7 @@ const Saved = () => {
   })
 
   savedState.handleDeleteSaved = id => {
-    API.deleteMedia(id)
+    API.deleteBook(id)
       .then(() => {
         let saved = savedState.saved.filter(book => book._id !== id)
         setSavedState({ ...savedState, saved })
@@ -34,10 +34,10 @@ const Saved = () => {
         savedState.saved.length > 0 ? (
           savedState.saved.map(book => (
             <div key={book.googleId}>
-              <img src={book.poster} alt={book.title} />
+              <img src={book.image} alt={book.title} />
               <h3>{book.title}</h3>
-              <h4>Authors: {book.type}</h4>
-              <h4>Description: {book.year}</h4>
+              <h4>Authors: {book.authors}</h4>
+              <h4>Description: {book.description}</h4>
              
               <Button color="primary" href={book.link}>Google Books Link</Button>
               <br></br>
