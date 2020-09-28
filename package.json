@@ -1,5 +1,5 @@
 {
-  "name": "movie-tv-search",
+  "name": "googlebook-search",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -20,9 +20,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/QFults/movie-tv-search/issues"
+    "url": "https://github.com/datrimboli/googlebook-search/issues"
   },
-  "homepage": "https://github.com/QFults/movie-tv-search#readme",
+  "homepage": "https://github.com/datrimboli/googlebook-search#readme",
   "dependencies": {
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
